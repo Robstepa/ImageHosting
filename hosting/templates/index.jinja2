@@ -1,0 +1,15 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Hosting</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+</head>
+<body>
+    <h1><a href="/hosting">Go home</a></h1><br/>
+    {% block content %}
+        <a href="upload/">Upload photo</a><br/>
+        <a href="gallery/">Gallery</a>
+    {% endblock %}
+</body>
+</html>

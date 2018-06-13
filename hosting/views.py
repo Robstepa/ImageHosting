@@ -1,8 +1,9 @@
 from django.shortcuts import render
-
+from PIL import Image
 from ImageHosting import settings
 from hosting.models import Photo
 from hosting.helpers import get_filename_from_path
+
 
 # Create your views here.
 
@@ -22,8 +23,13 @@ def gallery(request):
 
 
 def upload(request):
+    VALID_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png"]
     info = ''
     if request.method == 'POST':
-        Photo().image.save('img.jpg', request.FILES['photo'], True)
-        info = 'Done'
+        file = request.FILES['photo']
+        if file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS:
+            Photo().image.save('img.jpg', file, True)
+            info = 'Done'
+        else:
+            info = "Upload an image, please"
     return render(request, 'upload.jinja2', {'info': info})

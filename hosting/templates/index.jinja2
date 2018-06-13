@@ -6,10 +6,12 @@
     <link rel="stylesheet" href="{% static 'style.css' %}">
 </head>
 <body>
-    <h1><a href="/hosting">Go home</a></h1><br/>
-    {% block content %}
-        <a href="upload/">Upload photo</a><br/>
-        <a href="gallery/">Gallery</a>
-    {% endblock %}
+        <h1><a href="/hosting">Hosting App</a></h1><br/>
+        <div id="main-content">
+        {% block content %}
+            <a href="upload/" class="button">Upload photo</a><br/>
+            <a href="gallery/" class="button">Gallery</a>
+        {% endblock %}
+    </div>
 </body>
 </html>

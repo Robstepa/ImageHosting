@@ -1,14 +1,16 @@
 {% extends 'index.jinja2' %}
 
 {% block content %}
+    <div class="gallery">
     {% for photo in photos %}
         {% if photo.image %}
+            <input type="image" src="{{ photo.image.url }}">
             <form method="POST">
                 {% csrf_token %}
-                <input type="image" src="{{ photo.image.url }}" height="100" width="100"><br/>
                 <input type="hidden" value="{{ photo.image.path }}" name="photo">
                 <input type="submit" value="Delete">
             </form>
         {% endif %}
     {% endfor %}
+    </div>
 {% endblock %}

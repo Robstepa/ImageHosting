@@ -2,6 +2,7 @@ from django.shortcuts import render
 
 from ImageHosting import settings
 from hosting.models import Photo
+from hosting.helpers import get_filename_from_path
 
 # Create your views here.
 
@@ -12,6 +13,11 @@ def index(request):
 
 def gallery(request):
     photos = Photo.objects.all()
+    if request.method == 'POST':
+        name = get_filename_from_path(request.POST.get("photo"))
+        image = Photo.objects.get(image=name)
+        image.image.delete(True)
+        image.delete()
     return render(request, 'gallery.jinja2', {'photos': photos, 'media_url': settings.MEDIA_URL})
 
 

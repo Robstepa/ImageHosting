@@ -1,9 +1,13 @@
 {% extends 'index.jinja2' %}
 
 {% block content %}
-    <form method="post">
+    <form method="post" enctype="multipart/form-data">
         {% csrf_token %}
         <input type="file" name="photo">
         <input type="submit" value="Upload">
     </form>
+    {% if metod == 'POST'%}
+        {{ photo }}
+    {% endif %}
+    {{ info }}
 {% endblock %}

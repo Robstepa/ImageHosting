@@ -1,17 +1,56 @@
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <title>Hosting</title>
-    <link rel="stylesheet" href="{% static 'style.css' %}">
-</head>
-<body>
-        <h1><a href="/hosting">Hosting App</a></h1><br/>
-        <div id="main-content">
-        {% block content %}
-            <a href="upload/" class="button">Upload photo</a><br/>
-            <a href="gallery/" class="button">Gallery</a>
-        {% endblock %}
-    </div>
-</body>
+
+  <head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Image Hosting</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css'%}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'css/thumbnail-gallery.css' %}" rel="stylesheet">
+      <link href="{% static 'style.css' %}" rel="stylesheet">
+
+  </head>
+
+  <body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
+      <div class="container">
+        <a class="navbar-brand" href="#">Image Hosting</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="/hosting">Home
+                <span class="sr-only">(current)</span>
+              </a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/hosting/upload">Upload Image</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="/hosting/gallery">Gallery</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    {% block content %}
+        <p>Welcome</p>
+    {% endblock %}
+
+  </body>
+
 </html>

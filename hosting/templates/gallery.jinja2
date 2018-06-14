@@ -1,10 +1,15 @@
 {% extends 'index.jinja2' %}
 
 {% block content %}
-    <div class="gallery">
+    <div class="container">
+      <div class="row text-center text-lg-left">
     {% for photo in photos %}
         {% if photo.image %}
-            <input type="image" src="{{ photo.image.url }}">
+            <div class="col-lg-3 col-md-4 col-xs-6">
+                <a href="#" class="d-block mb-4 h-100">
+                    <img class="img-fluid img-thumbnail" src="{{ photo.image.url }}" alt="">
+                </a>
+            </div>
             <form method="POST">
                 {% csrf_token %}
                 <input type="hidden" value="{{ photo.image.path }}" name="photo">
@@ -12,5 +17,7 @@
             </form>
         {% endif %}
     {% endfor %}
+      </div>
+
     </div>
 {% endblock %}

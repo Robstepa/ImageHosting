@@ -5,3 +5,4 @@ from django.db import models
 
 class Photo(models.Model):
     image = models.ImageField()
+    statistic = models.CharField(max_length=500, default=0)

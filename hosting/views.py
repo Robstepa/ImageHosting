@@ -1,8 +1,7 @@
 from django.shortcuts import render
-from PIL import Image
 from ImageHosting import settings
 from hosting.models import Photo
-from hosting.helpers import get_filename_from_path
+from hosting.helpers import get_filename_from_path, get_statistics_from_image
 
 
 # Create your views here.
@@ -28,7 +27,7 @@ def upload(request):
     if request.method == 'POST':
         file = request.FILES['photo']
         if file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS:
-            Photo().image.save('img.jpg', file, True)
+            Photo(statistic=get_statistics_from_image(file)).image.save('img.jpg', file, True)
             info = 'Done'
         else:
             info = "Upload an image, please"

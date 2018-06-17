@@ -6,15 +6,12 @@
     {% for photo in photos %}
         {% if photo.image %}
             <div class="col-lg-3 col-md-4 col-xs-6">
-                <a href="#" class="d-block mb-4 h-100">
-                    <img class="img-fluid img-thumbnail" src="{{ photo.image.url }}" alt="">
-                </a>
+                <form action="photo/" class="d-block mb-4 h-100" method="GET">
+{#                    {% csrf_token %}#}
+                    <input type="image" name="photo" src="{{ photo.image.url }}" class="img-fluid img-thumbnail">
+                    <input type="hidden" value="{{ photo.image.path }}" name="path">
+                </form>
             </div>
-            <form method="POST">
-                {% csrf_token %}
-                <input type="hidden" value="{{ photo.image.path }}" name="photo">
-                <input type="submit" value="Delete">
-            </form>
         {% endif %}
     {% endfor %}
       </div>

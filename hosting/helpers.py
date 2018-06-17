@@ -10,14 +10,12 @@ def get_filename_from_path(path):
 def get_statistics_from_image(image):
     credentials = service_account.Credentials.from_service_account_file('D:/Python/key.json')
 
-    # Instantiates a client
     client = vision.ImageAnnotatorClient(credentials=credentials)
 
     content = image.read()
 
     image = types.Image(content=content)
 
-    # Performs label detection on the image file
     response = client.label_detection(image=image)
     labels = response.label_annotations
 
@@ -25,4 +23,4 @@ def get_statistics_from_image(image):
     for label in labels:
         statistics += label.description + ','
 
-    return statistics
+    return statistics[:-1]

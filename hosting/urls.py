@@ -5,5 +5,6 @@ from hosting import views
 urlpatterns = [
     path('', views.index, name='index'),
     path('upload/', views.upload, name='upload'),
-    path('gallery/', views.gallery, name='gallery')
+    path('gallery/', views.gallery, name='gallery'),
+    path('gallery/photo/', views.photo, name='photo')
 ]

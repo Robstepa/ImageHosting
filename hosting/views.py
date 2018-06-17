@@ -1,5 +1,5 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
-from ImageHosting import settings
 from hosting.models import Photo
 from hosting.helpers import get_filename_from_path, get_statistics_from_image
 
@@ -13,12 +13,7 @@ def index(request):
 
 def gallery(request):
     photos = Photo.objects.all()
-    if request.method == 'POST':
-        name = get_filename_from_path(request.POST.get("photo"))
-        image = Photo.objects.get(image=name)
-        image.image.delete(True)
-        image.delete()
-    return render(request, 'gallery.jinja2', {'photos': photos, 'media_url': settings.MEDIA_URL})
+    return render(request, 'gallery.jinja2', {'photos': photos})
 
 
 def upload(request):
@@ -32,3 +27,16 @@ def upload(request):
         else:
             info = "Upload an image, please"
     return render(request, 'upload.jinja2', {'info': info})
+
+
+def photo(request):
+    name = get_filename_from_path(request.GET.get('path'))
+    image = Photo.objects.get(image=name)
+    statistics = image.statistic.split(',')
+    if request.method == "POST":
+        image.image.delete(True)
+        image.delete()
+    try:
+        return render(request, 'photo.jinja2', {'image': image, 'statistics': statistics})
+    except ValueError:
+        return HttpResponseRedirect('/hosting/gallery/')

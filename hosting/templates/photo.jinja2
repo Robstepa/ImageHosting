@@ -1,16 +1,21 @@
 {% extends 'index.jinja2' %}
 
 {% block content %}
-    <div class="statistic">
-        <img src="{{ image.image.url }}">
-        <h1>Labels:</h1>
-        {% for statistic in statistics %}
-            <li>{{ statistic }}</li>
-        {% endfor %}
-        <form method="POST">
-            {% csrf_token %}
-            <input type="hidden" value="{{ image.image.path }}" name="path">
-            <input type="submit" value="Delete">
-        </form>
+    <div class="container">
+        <img src="{{ image.image.url }}" class="image">
+        <div class="overlay">
+            <div class="text">
+                <h1>Labels:</h1>
+                {% for statistic in statistics %}
+                    {{ statistic }}<br/>
+                {% endfor %}
+                <form method="POST" action="/hosting/gallery/delete/{{ image.id }}">
+                    {% csrf_token %}
+                    <input type="hidden" value="{{ image.image.path }}" name="path">
+                    <input type="submit" value="Delete" class="button">
+                </form>
+            </div>
+        </div>
     </div>
+    <h1 class="info">Hover image to see info</h1>
 {% endblock %}

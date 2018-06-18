@@ -2,10 +2,12 @@
 
 {% block content %}
     <div class="file-upload">
-    <form method="post" enctype="multipart/form-data">
-        {% csrf_token %}
-        <input type="file" name="photo" required><br/>
-        <input type="submit" value="Upload">
-    </form>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            <input type="file" name="photo" id="upload-photo" required><br/>
+            <label for="upload-photo" class="button label">Browse</label><br/>
+            {{ info }}<br/>
+            <input type="submit" value="Upload" class="button">
+        </form>
     </div>
 {% endblock %}

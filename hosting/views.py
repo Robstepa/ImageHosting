@@ -15,24 +15,26 @@ def gallery(request):
 
 def upload(request):
     VALID_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png"]
-    info = ''
+    info = 'Please, browse first'
     if request.method == 'POST':
         file = request.FILES['photo']
         if file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS:
             Photo(statistic=get_statistics_from_image(file)).image.save('img.jpg', file, True)
-            info = 'Done'
+            info = 'Done, now you can select another image'
         else:
             info = "Upload an image, please"
     return render(request, 'upload.jinja2', {'info': info})
 
 
-def photo(request, id):
-    image = Photo.objects.get(id=id)
+def photo(request, image_id):
+    image = Photo.objects.get(id=image_id)
     statistics = image.statistic.split(',')
+    return render(request, 'photo.jinja2', {'image': image, 'statistics': statistics})
+
+
+def delete(request, image_id):
+    image = Photo.objects.get(id=image_id)
     if request.method == "POST":
         image.image.delete(True)
         image.delete()
-    try:
-        return render(request, 'photo.jinja2', {'image': image, 'statistics': statistics})
-    except ValueError:
-        return HttpResponseRedirect('/hosting/gallery/')
+    return HttpResponseRedirect('/hosting/gallery/')

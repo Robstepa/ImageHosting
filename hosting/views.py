@@ -1,10 +1,7 @@
 from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from hosting.models import Photo
-from hosting.helpers import get_filename_from_path, get_statistics_from_image
-
-
-# Create your views here.
+from hosting.helpers import get_statistics_from_image
 
 
 def index(request):
@@ -29,9 +26,8 @@ def upload(request):
     return render(request, 'upload.jinja2', {'info': info})
 
 
-def photo(request):
-    name = get_filename_from_path(request.GET.get('path'))
-    image = Photo.objects.get(image=name)
+def photo(request, id):
+    image = Photo.objects.get(id=id)
     statistics = image.statistic.split(',')
     if request.method == "POST":
         image.image.delete(True)

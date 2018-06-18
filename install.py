@@ -2,7 +2,8 @@ import os
 
 resources = [
     'django',
-    'google-cloud-vision'
+    'google-cloud-vision',
+    'Pillow==5.0.0'
 ]
 
 for app in resources:

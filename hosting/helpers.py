@@ -3,10 +3,6 @@ from google.cloud.vision import types
 from google.oauth2 import service_account
 
 
-def get_filename_from_path(path):
-    return path.split('\\')[-1]
-
-
 def get_statistics_from_image(image):
     credentials = service_account.Credentials.from_service_account_file('key.json')
 

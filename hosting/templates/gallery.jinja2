@@ -2,19 +2,16 @@
 
 {% block content %}
     <div class="container">
-      <div class="row text-center text-lg-left">
-    {% for photo in photos %}
-        {% if photo.image %}
-            <div class="col-lg-3 col-md-4 col-xs-6">
-                <form action="photo/" class="d-block mb-4 h-100" method="GET">
-{#                    {% csrf_token %}#}
-                    <input type="image" name="photo" src="{{ photo.image.url }}" class="img-fluid img-thumbnail">
-                    <input type="hidden" value="{{ photo.image.path }}" name="path">
-                </form>
-            </div>
-        {% endif %}
-    {% endfor %}
-      </div>
-
+        <div class="row text-center text-lg-left">
+            {% for photo in photos %}
+                {% if photo.image %}
+                    <div class="col-lg-3 col-md-4 col-xs-6">
+                        <a href="photo/{{ photo.id }}" class="d-block mb-4 h-100">
+                            <img src="{{ photo.image.url }}" class="img-fluid img-thumbnail">
+                        </a>
+                    </div>
+                {% endif %}
+            {% endfor %}
+        </div>
     </div>
 {% endblock %}

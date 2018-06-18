@@ -1,11 +1,19 @@
-p {
+.welcome {
     text-align: center;
     margin-top: 15%;
     font-size: 150px;
 }
 
-.file-upload {
+.file-upload form{
     text-align: center;
     margin-top: 15%;
+}
+
+.statistic p, form{
+    text-align: right;
+}
+
+.statistic img{
+    float: left;
 }
 

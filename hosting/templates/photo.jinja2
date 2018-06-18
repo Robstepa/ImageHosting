@@ -1,13 +1,16 @@
 {% extends 'index.jinja2' %}
 
 {% block content %}
-    <img src="{{ image.image.url }}">
-    {% for statistic in statistics %}
-        <li>{{ statistic }}</li>
-    {% endfor %}
-    <form method="POST">
-        {% csrf_token %}
-        <input type="hidden" value="{{ image.image.path }}" name="path">
-        <input type="submit" value="Delete">
-    </form>
+    <div class="statistic">
+        <img src="{{ image.image.url }}">
+        <h1>Labels:</h1>
+        {% for statistic in statistics %}
+            <li>{{ statistic }}</li>
+        {% endfor %}
+        <form method="POST">
+            {% csrf_token %}
+            <input type="hidden" value="{{ image.image.path }}" name="path">
+            <input type="submit" value="Delete">
+        </form>
+    </div>
 {% endblock %}

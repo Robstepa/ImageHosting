@@ -8,7 +8,7 @@ def get_filename_from_path(path):
 
 
 def get_statistics_from_image(image):
-    credentials = service_account.Credentials.from_service_account_file('D:/Python/key.json')
+    credentials = service_account.Credentials.from_service_account_file('key.json')
 
     client = vision.ImageAnnotatorClient(credentials=credentials)
 

@@ -9,6 +9,6 @@
 This might be helpful: https://support.google.com/cloud/answer/6158862?hl=en
 
 # Running project
-From project folder run install.py<br/>
+From project folder run install.py(as admin)<br/>
 When you got your key as JSON file, rename it as key.json and put in project folder(dont worry its in .gitignore)<br/>
 Then type in your terminal(go to project folder) python manage.py runserver<br/>

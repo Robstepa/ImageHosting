@@ -4,7 +4,10 @@ from google.oauth2 import service_account
 
 
 def get_statistics_from_image(image):
-    credentials = service_account.Credentials.from_service_account_file('key.json')
+    try:
+        credentials = service_account.Credentials.from_service_account_file('key.json')
+    except FileNotFoundError:
+        return "Key not found"
 
     client = vision.ImageAnnotatorClient(credentials=credentials)
 

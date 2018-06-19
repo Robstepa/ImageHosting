@@ -18,7 +18,9 @@ def upload(request):
     info = 'Please, browse first'
     if request.method == 'POST':
         file = request.FILES['photo']
-        if file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS:
+        if get_statistics_from_image(file) == "Key not found":
+            info = "Key not found"
+        elif file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS :
             Photo(statistic=get_statistics_from_image(file)).image.save('img.jpg', file, True)
             info = 'Done, now you can select another image'
         else:

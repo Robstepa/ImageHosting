@@ -14,4 +14,5 @@ Choose Service Account Key as JSON file
 1. From project folder run install.py(as admin)<br/>
 2. When you got your key as JSON file, rename it as key.json and put in project folder(dont worry its in .gitignore)<br/>
 3. Then type in your terminal(go to project folder) `python manage.py migrate`<br/>
-4. Then type in your terminal(go to project folder) `python manage.py runserver`
+4. Then type in your terminal(go to project folder) `python manage.py runserver`<br/>
+5. Go to http://127.0.0.1:8000/hosting/

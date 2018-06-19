@@ -3,7 +3,7 @@
 # Requirements
 -python 3.6<br/>
 -django 2.0.1<br/>
--google-cloud-vision
+-google-cloud-vision<br/>
 -pip 10.0.1
 
 # You need get your own Google Vision API key

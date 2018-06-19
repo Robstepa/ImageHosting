@@ -8,7 +8,8 @@
 
 # You need get your own Google Vision API key
 This might be helpful: https://support.google.com/cloud/answer/6158862?hl=en <br/>
-Choose Service Account Key as JSON file
+Choose Service Account Key as JSON file<br/>
+Remeber to enable your Google Vision API
 
 # Running project
 1. From project folder run install.py(as admin)<br/>

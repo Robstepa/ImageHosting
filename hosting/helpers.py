@@ -23,3 +23,10 @@ def get_statistics_from_image(image):
         statistics += label.description + ','
 
     return statistics[:-1]
+
+
+def is_valid_type(file):
+    VALID_IMAGE_EXTENSIONS = ["jpg", "jpeg", "png"]
+    if file.name.split('.')[-1] in VALID_IMAGE_EXTENSIONS:
+        return True
+    return False

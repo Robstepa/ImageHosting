@@ -19,7 +19,7 @@ def upload(request):
         file = request.FILES['photo']
         if is_valid_type(file):
             image_info = get_statistics_from_image(file)
-            if isinstance(image_info, str):
+            if image_info == "Key not found":
                 info = image_info
             else:
                 Photo(statistic=image_info).image.save('img.jpg', file, True)
